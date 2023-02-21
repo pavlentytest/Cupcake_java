@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +70,7 @@ public class FlavorFragment extends Fragment {
     }
 
     public void goToNextScreen() {
-        Toast.makeText(getActivity(), "Next", Toast.LENGTH_SHORT).show();
+        Navigation.findNavController(requireView()).navigate(R.id.action_flavorFragment_to_pickupFragment);
     }
 
     @Override

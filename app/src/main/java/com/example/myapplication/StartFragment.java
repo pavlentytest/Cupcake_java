@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.myapplication.databinding.FragmentStartBinding;
+
+import java.util.Objects;
 
 public class StartFragment extends Fragment {
 
@@ -35,13 +38,18 @@ public class StartFragment extends Fragment {
     }
 
     public void orderCupcake(int quantity) {
-        Toast.makeText(getActivity(), "Ordered "+quantity+" cupcake(s)", Toast.LENGTH_SHORT).show();
+        Navigation.findNavController(requireView()).navigate(R.id.action_startFragment_to_flavorFragment);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragmentStartBinding.orderOneCupcake.setOnClickListener(view1 -> orderCupcake(1));
+        fragmentStartBinding.orderOneCupcake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                orderCupcake(1);
+            }
+        });
         fragmentStartBinding.orderSixCupcakes.setOnClickListener(view6 -> orderCupcake(6));
         fragmentStartBinding.orderTwelveCupcakes.setOnClickListener(view12 -> orderCupcake(12));
     }
