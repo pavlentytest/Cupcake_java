@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".PickupFragment">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.model.OrderViewModel" />
+    </data>
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,25 +31,33 @@
                     android:id="@+id/option0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Thursday" />
+                    android:checked="@{viewModel.date.equals(viewModel.dateOptions.get(0))}"
+                    android:onClick="@{() -> viewModel.set_date(viewModel.dateOptions.get(0))}"
+                    android:text="@{viewModel.dateOptions.get(0)}" />
 
                 <RadioButton
                     android:id="@+id/option1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Friday" />
+                    android:checked="@{viewModel.date.equals(viewModel.dateOptions.get(1))}"
+                    android:onClick="@{() -> viewModel.set_date(viewModel.dateOptions.get(1))}"
+                    android:text="@{viewModel.dateOptions.get(1)}" />
 
                 <RadioButton
                     android:id="@+id/option2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Saturday" />
+                    android:checked="@{viewModel.date.equals(viewModel.dateOptions.get(2))}"
+                    android:onClick="@{() -> viewModel.set_date(viewModel.dateOptions.get(2))}"
+                    android:text="@{viewModel.dateOptions.get(2)}"/>
 
                 <RadioButton
                     android:id="@+id/option3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Sunday" />
+                    android:checked="@{viewModel.date.equals(viewModel.dateOptions.get(3))}"
+                    android:onClick="@{() -> viewModel.set_date(viewModel.dateOptions.get(3))}"
+                    android:text="@{viewModel.dateOptions.get(3)}" />
             </RadioGroup>
 
             <View
@@ -64,7 +79,7 @@
                 android:layout_marginTop="@dimen/side_margin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider"
-                tools:text="Subtotal $5.00" />
+                android:text="@{viewModel.price.toString()}" />
 
             <Button
                 android:id="@+id/next_button"
