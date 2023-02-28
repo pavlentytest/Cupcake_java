@@ -39,4 +39,8 @@ public class OrderViewModel extends ViewModel {
         Log.d("ViewModel",this._price.getValue()+"");
     }
 
+    public boolean hasNoFlavourSet() {
+        return _flavour.getValue() == null || _flavour.getValue().isEmpty();
+    }
+
 }

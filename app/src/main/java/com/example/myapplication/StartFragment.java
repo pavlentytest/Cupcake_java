@@ -44,6 +44,10 @@ public class StartFragment extends Fragment {
 
     public void orderCupcake(int quantity) {
         orderViewModel.set_quantity(quantity);
+        if(orderViewModel.hasNoFlavourSet()) {
+
+            orderViewModel.set_flavour(getResources().getString(R.string.chocolate));
+        }
         Navigation.findNavController(requireView()).navigate(R.id.action_startFragment_to_flavorFragment);
     }
 
