@@ -65,7 +65,6 @@ public class OrderViewModel extends ViewModel {
         return _flavour.getValue() == null || _flavour.getValue().isEmpty();
     }
 
-
     public List<String> dateOptions = getPickupOptions();
 
     public List<String> getPickupOptions() {

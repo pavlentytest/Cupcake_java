@@ -47,6 +47,7 @@ public class PickupFragment extends Fragment {
         fragmentPickupBinding = FragmentPickupBinding.inflate(inflater, container, false);
         OrderViewModel orderViewModel = new ViewModelProvider(requireActivity()).get(OrderViewModel.class);
         fragmentPickupBinding.setViewModel(orderViewModel);
+        fragmentPickupBinding.setLifecycleOwner(this);
         return fragmentPickupBinding.getRoot();
     }
 
